@@ -1,13 +1,16 @@
+import java.math.BigInteger;
+
 public class Sequencial {
    
     public static void main(String[] args) {
-        long intervalo = 9223372036854775807L; 
+        int intervaloPerfeito = 10000;
+        long intervaloAmigo = 10000L;
         Sequencial seq = new Sequencial();
        
         System.out.println("Numeros perfeitos: ");
-        seq.numeroPerfeito(intervalo);
+        seq.numeroPerfeito(intervaloPerfeito);
         System.out.println("Pares amigaveis: ");
-        seq.paresAmigaveis(intervalo);
+        seq.paresAmigaveis(intervaloAmigo);
     }
     
 // Encontrando números primos através da fórmula de Euclides-Mersenne
@@ -24,17 +27,18 @@ public class Sequencial {
         return true;
     }
    
-    //determinar o número é perfeito
-    public void numeroPerfeito(long intervalo){
+    //verificar se o número é perfeito
+    public void numeroPerfeito(long intervaloPerfeito){
         
         //o maior número p que gera um perfeito que caiba na variável long é 31, mas deixei a lógica para ser aplicada a biginteger
-        for (int p=2; p<=31; p++){ //testa os números até 31 para encontrar os primos 
+        for (int p=2; p<=intervaloPerfeito; p++){ //testa os números do intervalo para encontrar os primos 
 
             if (primo(p)) { //se o número for primo ->
-                long mersenne = (long)Math.pow(2, p) - 1; //testa se ele é primo de mersenne 
-
-                if (primo(mersenne)) { //se for primo de mersenne ->
-                    long perfeito = (long)Math.pow(2, p - 1) * mersenne; //calcula o perfeito com base na fórmula euclides-mersenne
+                BigInteger dois = BigInteger.valueOf(2);
+                BigInteger mersenne = dois.pow(p).subtract(BigInteger.ONE); //testa se ele é primo de mersenne 
+ 
+                if (mersenne.isProbablePrime(10)) { //se provavelmente for primo ->
+                    BigInteger perfeito = dois.pow(p - 1).multiply(mersenne); //calcula o perfeito com base na fórmula euclides-mersenne
                     System.out.println(perfeito); 
                 }
             }
@@ -43,7 +47,7 @@ public class Sequencial {
 
 
 /*    
-//Verificar se o número é perfeito um a um
+    //Verificar se o número é perfeito
     public void numeroPerfeito(long intervalo) {
         long soma = 0;
 
@@ -67,12 +71,12 @@ public class Sequencial {
 */
 
 //Verificar se dois números são pares amigáveis
-    public void paresAmigaveis (long intervalo){
+    public void paresAmigaveis (long intervaloAmigo){
 
         long soma = 0;
         long somaPar = 0;
 
-        for(long i=1; i<intervalo; i++){ //roda todos os números até o intervalo definido, de tamanho long
+        for(long i=1; i<intervaloAmigo; i++){ //roda todos os números até o intervalo definido, de tamanho long
             
             for(long j=1; j<i; j++){ //roda todos os números até i, buscando os divisores
                 if((i%j)==0){
