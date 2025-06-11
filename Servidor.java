@@ -1,10 +1,3 @@
-package maria.numeros.perfeitos.amigaveis;
-
-/**
- *
- * @author Maria Clara Jesus
- */
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -14,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 public class Servidor {
     private static int porta = 20000;
@@ -34,7 +26,7 @@ public class Servidor {
             System.out.println("Primeiro cliente conectado: " + primeiraConexao.getInetAddress());
 
             //espera até 3 segundos para mais conexões
-            long tempoLimite = System.currentTimeMillis() + 3000;
+            long tempoLimite = System.currentTimeMillis() + 10000;
 
             while (System.currentTimeMillis() < tempoLimite) {
                 servidor.setSoTimeout((int) (tempoLimite - System.currentTimeMillis()));
