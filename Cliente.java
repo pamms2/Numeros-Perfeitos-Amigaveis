@@ -1,10 +1,3 @@
-package maria.numeros.perfeitos.amigaveis;
-
-/**
- *
- * @author Maria Clara Jesus
- */
-
 // Cliente que recebe intervalo de p do servidor
  //e paraleliza a verificação de números perfeitos e amigáveis com n threads.
 
