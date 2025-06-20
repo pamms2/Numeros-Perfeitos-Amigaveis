@@ -76,9 +76,10 @@ Por outro lado, a verificação de **pares de números amigáveis** requer uma v
 
 A implementação sequencial realiza o processamento utilizando apenas um núcleo de CPU, com execução linear das tarefas.
 
-- **Função de Verificação de Números Perfeitos:**  
+#### Função de Verificação de Números Perfeitos:
 
-- **Função de Verificação de Pares Amigáveis:**  
+
+#### Função de Verificação de Pares Amigáveis:  
 
 
 ### 🧩 Paralela
@@ -94,7 +95,7 @@ Na abordagem distribuída, o processamento é dividido entre múltiplos clientes
 
 ### ⚖️ Comparativo
 
-| ID Teste | Intervalo Perfeito (p) | Intervalo Amigável (n) | Sequencial | Paralela | Distribuída |
+| | Intervalo Perfeito (p) | Intervalo Amigável (n) | Sequencial | Paralela | Distribuída |
 |---------|------------------------|------------------------|------------|----------|-------------|
 | Teste 1 | Até 20.000             | Até 100.000.000        |          |        |           |
 | Teste 2 | Até 12.000             | Até 50.000.000         |          |        |           |
