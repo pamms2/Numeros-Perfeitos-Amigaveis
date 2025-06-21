@@ -74,7 +74,6 @@ public class Paralelo {
 
         @Override
         public void run() {
-
             // Cada thread testa uma faixa de expoentes 'p' para a fórmula de Euclides-Euler.
             for (int p = numInicial; p <= numFinal; p++) {
                 if (ehPrimo(p)) {
@@ -138,7 +137,6 @@ public class Paralelo {
         int intervaloPerfeito = 12000;
         int intervaloAmigo = 50000000;
 
-        
         Map<Integer, Integer> paresAmigaveis = new ConcurrentSkipListMap<>(); // Armazena de forma ordenada e segura entre as threads.
         Set<Integer> amigaveisJaEncontrados = java.util.concurrent.ConcurrentHashMap.newKeySet(); // Conjunto para evitar duplicatas e otimizar a busca.
 
@@ -147,7 +145,6 @@ public class Paralelo {
         List<Thread> todasAsThreads = new java.util.ArrayList<>();
         int tamanhoIntervaloAmigo = intervaloAmigo / numThreads;
         int tamanhoIntervaloPerfeito = intervaloPerfeito / numThreads;
-
 
         for (int i = 0; i < numThreads; i++) { // O trabalho é dividido em faixas de busca para cada thread.
             int inicioP = i * tamanhoIntervaloPerfeito + 1;

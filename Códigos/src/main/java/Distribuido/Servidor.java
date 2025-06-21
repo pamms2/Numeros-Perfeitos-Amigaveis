@@ -52,6 +52,7 @@ public class Servidor {
 
     // Método para dividir os intervalos de verificação entre os clientes conectados   
     private static void distribuirIntervalos() {
+        
         int totalClientes = clientes.size();
 
         // Calcula somatório de pesos: S = 2^0 + 2^1 + ... + 2^(n-1)

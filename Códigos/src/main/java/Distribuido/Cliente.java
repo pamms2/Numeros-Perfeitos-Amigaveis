@@ -34,7 +34,7 @@ public class Cliente {
             Map<Integer, Integer> paresAmigaveis = new ConcurrentSkipListMap<>();
             Set<Integer> jaEncontrados = ConcurrentHashMap.newKeySet();
 
-            // Divide o intervalo de pares amigáveis entre múltiplas threads
+            // Divide o intervalo de pares amigáveis e números perfeitos entre múltiplas threads
             int intervaloAmigo = fimAmigo - inicioAmigo + 1;
             int tamanhoSubAmigo = intervaloAmigo / numThreads;
             

@@ -1,9 +1,8 @@
-ClientesConexao.class
+Distribuido\Servidor.class
+Distribuido\Cliente.class
+Distribuido\ThreadParesAmigaveis.class
 Sequencial.class
-Servidor.class
-ThreadNumerosPerfeitos.class
-Cliente.class
 Paralelo$threadBuscaPerfeito.class
 Paralelo.class
-ThreadParesAmigaveis.class
+Distribuido\ThreadNumerosPerfeitos.class
 Paralelo$threadBuscaAmigavel.class
