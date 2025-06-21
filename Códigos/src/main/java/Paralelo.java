@@ -65,7 +65,6 @@ public class Paralelo {
         int numInicial;
         int numFinal;
         int limiteMax;
-        ConcurrentSkipListSet<BigInteger> resultado;
 
         public threadBuscaPerfeito(int numInicial, int numFinal, int limiteMax) {
             this.numInicial = numInicial;
