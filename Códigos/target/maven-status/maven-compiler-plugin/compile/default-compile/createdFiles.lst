@@ -1,0 +1,8 @@
+Distribuido\Servidor.class
+Distribuido\Cliente.class
+Distribuido\ThreadParesAmigaveis.class
+Sequencial.class
+Paralelo$threadBuscaPerfeito.class
+Paralelo.class
+Distribuido\ThreadNumerosPerfeitos.class
+Paralelo$threadBuscaAmigavel.class
