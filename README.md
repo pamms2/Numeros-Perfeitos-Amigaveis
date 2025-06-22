@@ -82,10 +82,8 @@ O arquivo .java pode ser encontrado neste repositório pelo caminho: `/Códigos/
 - À esquerda, a função responsável por calcular o primo de mersenne a partir de **p** e, após, calcular o **número perfeito** derivado deste. 
 - À direita, uma função de apoio, que é responsável por verificar se o número é primo.
 
-<p>
-  <img src="docs/sequencial/funcao_numeroPerfeito.png" style="width:auto; height:250; margin-right:15;" />
-  <img src="docs/sequencial/funcao_de_apoio_primo.png" style="width:auto; height:250;" />
-</p>
+| <img src="docs/sequencial/funcao_numeroPerfeito.png" height="200"> | <img src="docs/sequencial/funcao_de_apoio_primo.png" height="200"> |
+|:---:|:---:|
 
 
 
@@ -94,10 +92,8 @@ O arquivo .java pode ser encontrado neste repositório pelo caminho: `/Códigos/
 - À esquerda, a função responsável por verificar se a soma de divisores de um número é **recíproca** com outro, determinando **pares amigáveis**. 
 - À direita, uma função de apoio, que é responsável por calcular a **soma dos divisores**.
 
-<p>
-  <img src="docs/sequencial/funcao_buscarParesAmigaveis.png" style="width:auto; height:200; margin-right:15;" />
-  <img src="docs/sequencial/funcao_de_apoio_somaDivisores.png" style="width:auto; height:200;" />
-</p>
+| <img src="docs/sequencial/funcao_buscarParesAmigaveis.png" height="200"> | <img src="docs/sequencial/funcao_de_apoio_somaDivisores.png" height="200"> |
+|:---:|:---:|
 
 Para implementar a execução **paralela** e **distribuída** baseou-se na mesma lógica aplicada ao sequencial, fazendo apenas as adaptações necessárias nas funções citadas.
 
