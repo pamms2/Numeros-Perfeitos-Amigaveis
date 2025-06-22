@@ -75,7 +75,7 @@ Por outro lado, a verificação de **pares de números amigáveis** requer uma v
 ### 🧵 Sequencial
 
 A implementação **sequencial** realiza o processamento utilizando apenas um núcleo de CPU, com execução linear das tarefas.   
-
+O arquivo .java pode ser encontrado neste repositório pelo caminho: `/Códigos/src/main/java/Sequencial.java`
 
 #### Função de Cálculo de Números Perfeitos:
 
