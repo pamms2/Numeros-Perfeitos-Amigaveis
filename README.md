@@ -114,9 +114,9 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 
 | | Intervalo Perfeito (p) | Intervalo Amigável (n) | Sequencial | Paralela | Distribuída |
 |---------|------------------------|------------------------|------------|----------|-------------|
-| Teste 1 | Até 20.000             | Até 100.000.000        |     150     |    47,75    |      37,13     |
-| Teste 2 | Até 12.000             | Até 50.000.000         |     42,3     |    6,983    |      7,62     |
-| Teste 3 | Até 10.000             | Até 30.000.000         |     19,75     |    3,3   |      3,33     |
+| Teste 1 | Até 20.000             | Até 100.000.000        |     150:00     |    47:45    |      37:08     |
+| Teste 2 | Até 12.000             | Até 50.000.000         |     42:18    |    6:59    |      7:37     |
+| Teste 3 | Até 10.000             | Até 30.000.000         |     19:45     |    3:18   |      3:20     |
 
 <br>
 
@@ -124,21 +124,21 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 
 #### 🧩 Paralelo
 
-| Threads | Tempo (min) |
+| Threads | Tempo |
 |---------|-------------|
-| 4       | 8,9167      |
-| 6       | 6,983       |
-| 8       | 8,066       |
+| 4       | 8:55      |
+| 6       | 6:59       |
+| 8       | 8:04       |
 
 #### 🌐 Distribuído
 
-| Threads - Clientes | Tempo (min) |
+| Threads - Clientes | Tempo  |
 |--------------------|-------------|
-| 2 - 2              | 8,55        |
-| 2 - 3              | 7,62        |
-| 3 - 2              | 7,216       |
-| 2 - 4              | 6,15        |
-| 4 - 2              | 6,9         |
+| 2 - 2              | 8:33        |
+| 2 - 3              | 7:37        |
+| 3 - 2              | 7:13      |
+| 2 - 4              | 6:09       |
+| 4 - 2              | 6:54        |
 
 ### Visão Geral
 
