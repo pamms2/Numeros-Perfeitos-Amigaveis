@@ -74,13 +74,32 @@ Por outro lado, a verificação de **pares de números amigáveis** requer uma v
 
 ### 🧵 Sequencial
 
-A implementação sequencial realiza o processamento utilizando apenas um núcleo de CPU, com execução linear das tarefas.
+A implementação **sequencial** realiza o processamento utilizando apenas um núcleo de CPU, com execução linear das tarefas.   
 
-#### Função de Verificação de Números Perfeitos:
+
+#### Função de Cálculo de Números Perfeitos:
+
+- À esquerda, a função responsável por calcular o primo de mersenne a partir de **p** e, após, calcular o **número perfeito** derivado deste. 
+- À direita, uma função de apoio, que é responsável por verificar se o número é primo.
+
+<p>
+  <img src="docs/sequencial/funcao_numeroPerfeito.png" style="width:auto; height:250; margin-right:15;" />
+  <img src="docs/sequencial/funcao_de_apoio_primo.png" style="width:auto; height:250;" />
+</p>
+
 
 
 #### Função de Verificação de Pares Amigáveis:  
 
+- À esquerda, a função responsável por verificar se a soma de divisores de um número é **recíproca** com outro, determinando **pares amigáveis**. 
+- À direita, uma função de apoio, que é responsável por calcular a **soma dos divisores**.
+
+<p>
+  <img src="docs/sequencial/funcao_buscarParesAmigaveis.png" style="width:auto; height:200; margin-right:15;" />
+  <img src="docs/sequencial/funcao_de_apoio_somaDivisores.png" style="width:auto; height:200;" />
+</p>
+
+Para implementar a execução **paralela** e **distribuída** baseou-se na mesma lógica aplicada ao sequencial, fazendo apenas as adaptações necessárias nas funções citadas.
 
 ### 🧩 Paralela
 
