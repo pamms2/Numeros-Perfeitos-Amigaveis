@@ -88,20 +88,59 @@ A versão paralela distribui a carga de trabalho entre múltiplas threads...
 
 ### 🌐 Distribuída
 
-Na abordagem distribuída, o processamento é dividido entre múltiplos clientes ...
+Na abordagem distribuída, o processamento é dividido entre múltiplos clientes, que se conectam a um servidor central via Sockets TCP. Cada cliente recebe um intervalo específico de trabalho e executa suas tarefas utilizando múltiplas threads internas. A distribuição dos intervalos é feita de forma exponencial, favorecendo os primeiros clientes conectados.
+<br>
+Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula um ambiente real distribuído, com múltiplos processos independentes e comunicação em rede. 
 
+#### Divisão de Intervalos no Servidor
+
+#### Divisão de Subintervalos para Threads
 
 ## 📈 Análise
+
+### 💻 Configuração da Máquina
+
+| Componente             | Especificação                                 |
+|------------------------|-----------------------------------------------|
+| Processador            | Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz     |
+| Memória RAM            | 8,00 GB                                       |
+| Sistema Operacional    | Windows 11 64 bits                            |
+| Quantidade de núcleos  | 4                                             |
+| Armazenamento          | 477 GB SSD                                    |
+
+<br>
 
 ### ⚖️ Comparativo
 
 | | Intervalo Perfeito (p) | Intervalo Amigável (n) | Sequencial | Paralela | Distribuída |
 |---------|------------------------|------------------------|------------|----------|-------------|
-| Teste 1 | Até 20.000             | Até 100.000.000        |          |        |           |
-| Teste 2 | Até 12.000             | Até 50.000.000         |          |        |           |
-| Teste 3 | Até 10.000             | Até 30.000.000         |          |        |           |
+| Teste 1 | Até 20.000             | Até 100.000.000        |     150     |    47,75    |      37,13     |
+| Teste 2 | Até 12.000             | Até 50.000.000         |     42,3     |    6,983    |      7,62     |
+| Teste 3 | Até 10.000             | Até 30.000.000         |     19,75     |    3,3   |      3,33     |
 
 <br>
+
+### 📈 Teste de Escalabilidade
+
+#### 🧩 Paralelo
+
+| Threads | Tempo (min) |
+|---------|-------------|
+| 4       | 8,9167      |
+| 6       | 6,983       |
+| 8       | 8,066       |
+
+#### 🌐 Distribuído
+
+| Threads - Clientes | Tempo (min) |
+|--------------------|-------------|
+| 2 - 2              | 8,55        |
+| 2 - 3              | 7,62        |
+| 3 - 2              | 7,216       |
+| 2 - 4              | 6,15        |
+| 4 - 2              | 6,9         |
+
+### Visão Geral
 
 ## 📂 Estrutura dos Arquivos
 
@@ -111,7 +150,6 @@ Na abordagem distribuída, o processamento é dividido entre múltiplos clientes
 - **README.md** – Arquivo de descrição do projeto
 
 ## 🧱 Desafios e Soluções
-
 
 
 ## 🚀 Melhorias
