@@ -113,10 +113,10 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 ### ⚖️ Comparativo
 
 | | Intervalo Perfeito (p) | Intervalo Amigável (n) | Sequencial | Paralela | Distribuída |
-|---------|------------------------|------------------------|------------|----------|-------------|
-| Teste 1 | Até 20.000             | Até 100.000.000        |     150:00     |    47:45    |      37:08     |
-| Teste 2 | Até 12.000             | Até 50.000.000         |     42:18    |    6:59    |      7:37     |
-| Teste 3 | Até 10.000             | Até 30.000.000         |     19:45     |    3:18   |      3:20     |
+|---------|------------------------|------------------------|-----------------|-------------|----------------|
+| Teste 1 | Até 20.000             | Até 100.000.000        |     2:30:00     |    47:45    |      37:08     |
+| Teste 2 | Até 12.000             | Até 50.000.000         |      42:18      |    6:59     |      7:37      |
+| Teste 3 | Até 10.000             | Até 30.000.000         |     19:45       |    3:18     |       3:20     |
 
 <br>
 
@@ -124,23 +124,29 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 
 #### 🧩 Paralelo
 
-| Threads | Tempo |
+| Threads | Tempo (min) |
 |---------|-------------|
-| 4       | 8:55      |
-| 6       | 6:59       |
-| 8       | 8:04       |
+| 4       | 8:55        |
+| 6       | 6:59        |
+| 8       | 8:04        |
 
 #### 🌐 Distribuído
 
-| Threads - Clientes | Tempo  |
+| Threads - Clientes | Tempo (min) |
 |--------------------|-------------|
 | 2 - 2              | 8:33        |
 | 2 - 3              | 7:37        |
-| 3 - 2              | 7:13      |
-| 2 - 4              | 6:09       |
+| 3 - 2              | 7:13        |
+| 2 - 4              | 6:09        |
 | 4 - 2              | 6:54        |
 
-### Visão Geral
+### 📝 Visão Geral
+Os testes realizados visam comparar as três abordagens distintas. Por meio deles, foi possível observar que:
+- Na versão **sequencial**, todas as operaçoes são realizadas em um único fluxo de execução, o que resulta em maior tempo de processamento devido à ausÊncia de paralelismo; <br>
+- A implementação **paralela** explora múltiplas threads dentro de uma mesma máquina para dividir o trabalho, permitindo a execução simultânea de várias tarefas e, consequentemente, reduzindo o tempo total de processamento; <br>
+- Já a abordagem **distribuída** simula um ambiente distribuído, onde múltiplos clientes se conectam a um servidor central via sockets TCP e recebem intervalos de trabalho para processar. Como todas as execuções ocorrem em uma única máquina, cada cliente utiliza múltiplas threads internas para paralelizar seu processamento localmente. Essa combinação de distribuição entre processos independentes (clientes), paralelismo interno (threads) e divisão exponencial de intervalo de números perfeitos, permite uma divisão eficiente da carga, tornando essa abordagem mais rápida que a sequencial e, em muitos casos, até mesmo mais eficiente que a paralela tradicional.
+
+<br>
 
 ## 📂 Estrutura dos Arquivos
 
