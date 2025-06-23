@@ -108,8 +108,16 @@ Na abordagem distribuída, o processamento é dividido entre múltiplos clientes
 Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula um ambiente real distribuído, com múltiplos processos independentes e comunicação em rede. 
 
 #### Divisão de Intervalos no Servidor
+- A imagem à esquerda se refere à distribuição do intervalo determinado em sub-intervalos que serão enviados aos clientes.  
+- A imagem à direita se refere à divisão real, no qual esses sub-intervalos serão enviados para os seus respectivos clientes. 
+
+| <img src="docs/distribuido/funcao_distribuirIntervalos.png" height="200"> | <img src="docs/distribuido/divisaoDosIntervalos.png" height="200"> |
+|:---:|:---:|
 
 #### Divisão de Subintervalos para Threads
+- A imagem se refere à divisão do intervalo de cada cliente em sub-intervalos que serão calculados em cada thread.
+
+<img src="docs/distribuido/divisaoThreads.png" height="200"> 
 
 <br>
 
