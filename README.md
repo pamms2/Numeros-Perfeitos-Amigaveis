@@ -103,18 +103,73 @@ A versão paralela distribui a carga de trabalho entre múltiplas threads...
 
 ### 🌐 Distribuída
 
-Na abordagem distribuída, o processamento é dividido entre múltiplos clientes ...
+Na abordagem distribuída, o processamento é dividido entre múltiplos clientes, que se conectam a um servidor central via Sockets TCP. Cada cliente recebe um intervalo específico de trabalho e executa suas tarefas utilizando múltiplas threads internas. A distribuição dos intervalos é feita de forma exponencial, favorecendo os primeiros clientes conectados.
+<br>
+Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula um ambiente real distribuído, com múltiplos processos independentes e comunicação em rede. 
 
+#### Divisão de Intervalos no Servidor
+
+#### Divisão de Subintervalos para Threads
+
+<br>
 
 ## 📈 Análise
 
+Nesta seção são apresentados os resultados obtidos nos testes de desempenho para as três abordagens: **sequencial**, **paralela** e **distribuída**. As comparações foram feitas com base no tempo de execução total para diferentes intervalos, considerando tanto números perfeitos quanto pares de números amigáveis. Também foram realizados testes específicos para avaliar a **escalabilidade** das abordagens paralela e distribuída, variando a quantidade de threads e processos.
+
+### 💻 Configuração da Máquina
+
+Todos os testes foram realizados na mesma máquina, com as seguintes configurações. É importante destacar que, embora a abordagem distribuída normalmente envolva múltiplos dispositivos, neste projeto todas as execuções ocorreram localmente, simulando um ambiente distribuído por meio de múltiplos processos independentes.
+
+| Componente             | Especificação                                 |
+|------------------------|-----------------------------------------------|
+| Processador            | Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz     |
+| Memória RAM            | 8,00 GB                                       |
+| Sistema Operacional    | Windows 11 64 bits                            |
+| Quantidade de núcleos  | 4                                             |
+| Armazenamento          | 477 GB SSD                                    |
+
 ### ⚖️ Comparativo
 
+A tabela a seguir resume os tempos de execução dos três códigos para diferentes intervalos de teste.
+
 | | Intervalo Perfeito (p) | Intervalo Amigável (n) | Sequencial | Paralela | Distribuída |
-|---------|------------------------|------------------------|------------|----------|-------------|
-| Teste 1 | Até 20.000             | Até 100.000.000        |          |        |           |
-| Teste 2 | Até 12.000             | Até 50.000.000         |          |        |           |
-| Teste 3 | Até 10.000             | Até 30.000.000         |          |        |           |
+|---------|------------------------|------------------------|-----------------|-------------|----------------|
+| Teste 1 | Até 20.000             | Até 100.000.000        |     2:30:00     |    47:45    |      37:08     |
+| Teste 2 | Até 12.000             | Até 50.000.000         |      42:18      |    6:59     |      7:37      |
+| Teste 3 | Até 10.000             | Até 30.000.000         |     19:45       |    3:18     |       3:20     |
+
+### 📈 Teste de Escalabilidade
+
+Os testes de escalabilidade foram realizados com o objetivo de avaliar como o desempenho das abordagens paralela e distribuída varia com o aumento da quantidade de threads e processos.
+
+#### 🧩 Paralelo
+
+No modelo paralelo, observa-se que o aumento do número de threads pode melhorar o desempenho até certo ponto. Contudo, após determinado limite, o ganho se estabiliza ou até mesmo regride, devido à sobrecarga de gerenciamento das threads e à limitação física.
+
+| Threads | Tempo (min) |
+|---------|-------------|
+| 4       | 8:55        |
+| 6       | 6:59        |
+| 8       | 8:04        |
+
+#### 🌐 Distribuído
+
+Na versão distribuída, foram testadas combinações variadas de clientes e threads por cliente. Os resultados indicam que o uso de múltiplos clientes, em conjunto com threads internas, proporciona uma boa divisão de carga, com redução significativa do tempo de execução, mesmo em um ambiente local. 
+
+| Threads - Clientes | Tempo (min) |
+|--------------------|-------------|
+| 2 - 2              | 8:33        |
+| 2 - 3              | 7:37        |
+| 3 - 2              | 7:13        |
+| 2 - 4              | 6:09        |
+| 4 - 2              | 6:54        |
+
+### 📝 Visão Geral
+Os testes realizados visam comparar as três abordagens distintas. Por meio deles, foi possível observar que:
+- Na versão **sequencial**, todas as operaçoes são realizadas em um único fluxo de execução, o que resulta em maior tempo de processamento devido à ausÊncia de paralelismo; <br>
+- A implementação **paralela** explora múltiplas threads dentro de uma mesma máquina para dividir o trabalho, permitindo a execução simultânea de várias tarefas e, consequentemente, reduzindo o tempo total de processamento; <br>
+- Já a abordagem **distribuída** simula um ambiente distribuído, onde múltiplos clientes se conectam a um servidor central via sockets TCP e recebem intervalos de trabalho para processar. Como todas as execuções ocorrem em uma única máquina, cada cliente utiliza múltiplas threads internas para paralelizar seu processamento localmente. Essa combinação de distribuição entre processos independentes (clientes), paralelismo interno (threads) e divisão exponencial de intervalo de números perfeitos, permite uma divisão eficiente da carga, tornando essa abordagem mais rápida que a sequencial e, em muitos casos, até mesmo mais eficiente que a paralela tradicional.
 
 <br>
 
