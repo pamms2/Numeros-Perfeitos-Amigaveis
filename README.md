@@ -96,9 +96,15 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 
 #### Divisão de Subintervalos para Threads
 
+<br>
+
 ## 📈 Análise
 
+Nesta seção são apresentados os resultados obtidos nos testes de desempenho para as três abordagens: **sequencial**, **paralela** e **distribuída**. As comparações foram feitas com base no tempo de execução total para diferentes intervalos, considerando tanto números perfeitos quanto pares de números amigáveis. Também foram realizados testes específicos para avaliar a **escalabilidade** das abordagens paralela e distribuída, variando a quantidade de threads e processos.
+
 ### 💻 Configuração da Máquina
+
+Todos os testes foram realizados na mesma máquina, com as seguintes configurações. É importante destacar que, embora a abordagem distribuída normalmente envolva múltiplos dispositivos, neste projeto todas as execuções ocorreram localmente, simulando um ambiente distribuído por meio de múltiplos processos independentes.
 
 | Componente             | Especificação                                 |
 |------------------------|-----------------------------------------------|
@@ -108,9 +114,9 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 | Quantidade de núcleos  | 4                                             |
 | Armazenamento          | 477 GB SSD                                    |
 
-<br>
-
 ### ⚖️ Comparativo
+
+A tabela a seguir resume os tempos de execução dos três códigos para diferentes intervalos de teste.
 
 | | Intervalo Perfeito (p) | Intervalo Amigável (n) | Sequencial | Paralela | Distribuída |
 |---------|------------------------|------------------------|-----------------|-------------|----------------|
@@ -118,11 +124,13 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 | Teste 2 | Até 12.000             | Até 50.000.000         |      42:18      |    6:59     |      7:37      |
 | Teste 3 | Até 10.000             | Até 30.000.000         |     19:45       |    3:18     |       3:20     |
 
-<br>
-
 ### 📈 Teste de Escalabilidade
 
+Os testes de escalabilidade foram realizados com o objetivo de avaliar como o desempenho das abordagens paralela e distribuída varia com o aumento da quantidade de threads e processos.
+
 #### 🧩 Paralelo
+
+No modelo paralelo, observa-se que o aumento do número de threads pode melhorar o desempenho até certo ponto. Contudo, após determinado limite, o ganho se estabiliza ou até mesmo regride, devido à sobrecarga de gerenciamento das threads e à limitação física.
 
 | Threads | Tempo (min) |
 |---------|-------------|
@@ -131,6 +139,8 @@ Embora os testes tenham sido realizados na mesma máquina, a arquitetura simula 
 | 8       | 8:04        |
 
 #### 🌐 Distribuído
+
+Na versão distribuída, foram testadas combinações variadas de clientes e threads por cliente. Os resultados indicam que o uso de múltiplos clientes, em conjunto com threads internas, proporciona uma boa divisão de carga, com redução significativa do tempo de execução, mesmo em um ambiente local. 
 
 | Threads - Clientes | Tempo (min) |
 |--------------------|-------------|
