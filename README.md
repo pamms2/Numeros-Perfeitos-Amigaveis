@@ -97,9 +97,35 @@ O arquivo .java pode ser encontrado neste repositório pelo caminho: `/Códigos/
 
 Para implementar a execução **paralela** e **distribuída** baseou-se na mesma lógica aplicada ao sequencial, fazendo apenas as adaptações necessárias nas funções citadas.
 
-### 🧩 Paralela
+### 🧩 Paralela 
 
-A versão paralela distribui a carga de trabalho entre múltiplas threads...
+ A versão paralela distribui a carga de trabalho entre múltiplas threads em uma única máquina, explorando a estratégia de Dividir para Conquistar. O método `main` atua como um orquestrador que "fatia" os intervalos de busca e delega cada fatia para uma thread específica. As buscas por números perfeitos e amigáveis são lançadas para rodar simultaneamente, e o `main` aguarda a finalização de todas as threads (`join`) antes de apresentar os resultados consolidados da busca por números amigáveis.
+
+ **Lógica das Threads Paralelas (Runnable)**
+ Para alcançar o paralelismo, a lógica de cada busca foi encapsulada em uma classe que implementa a interface `Runnable`, definindo o "plano de trabalho" de cada thread.
+
+ #### Busca por Números Perfeitos (`threadBuscaPerfeito`)
+ A busca pelos expoentes `p` que geram os números perfeitos é dividida entre as threads. Cada thread, ao encontrar um primo de Mersenne, calcula o número perfeito correspondente e, na implementação atual, imprime o resultado diretamente no console.
+
+ <img src="docs/paralelo/ThreadBuscaPerfeito.png" height="400">
+
+ *Descrição da Imagem:* Classe `threadBuscaPerfeito` que implementa `Runnable`. Ela contém atributos para `numInicial`, `numFinal` e `limiteMax`, e um método `run()` que itera sobre um intervalo de expoentes `p`. Para cada `p`, verifica se é primo e, se for, calcula o Primo de Mersenne correspondente (`2^p - 1`). Se o Primo de Mersenne for provavelmente primo, calcula o número perfeito derivado (`2^(p-1) * (2^p - 1)`) e o imprime no console.
+
+ #### Busca por Pares Amigáveis (`threadBuscaAmigavel`)
+ A busca por pares amigáveis também é paralelizada, com cada thread investigando uma fatia do intervalo numérico. A eficiência desta busca é garantida por duas otimizações principais:
+
+ * **Quebra de Simetria:** A verificação `divisores > i` garante que cada par `{a, b}` seja processado apenas uma vez, pelo seu membro menor.
+ * **Cache Compartilhado:** Um `Set` concorrente (`amigaveisJaEncontrados`) é usado para que, quando uma thread encontra um par, ela adicione ambos os números a este conjunto. Outras threads consultam este conjunto antes de qualquer cálculo pesado e, se o número já estiver lá, pulam a verificação.
+
+ <img src="docs/paralelo/ThreadBuscaAmigavel.png" height="400">
+
+ *Descrição da Imagem:* Classe `threadBuscaAmigavel` que implementa `Runnable`. Ela possui atributos para `numInicial`, `numFinal`, `limiteMax`, um `Map` para `paresAmigaveis` e um `Set` para `amigaveisJaEncontrados`. O método `run()` itera sobre o intervalo numérico, verifica se o número já foi encontrado (otimização de cache), calcula a soma dos divisores e, se encontrar um par amigável recíproco, o adiciona ao `Map` de pares e ao `Set` de encontrados para otimização futura.
+
+ #### Estruturas de Dados e Sincronização
+ Para garantir a integridade dos dados com múltiplas threads acessando as coleções de resultados ao mesmo tempo, foram utilizadas estruturas de dados "thread-safe":
+
+ * **`ConcurrentSkipListMap`**: Usado para armazenar os pares amigáveis. Garante acesso concorrente seguro e mantém os pares ordenados pela chave (o menor número do par).
+ * **`ConcurrentHashMap.newKeySet()`**: Usado para o conjunto de otimização `amigaveisJaEncontrados`. Oferece altíssima performance para as operações de `add` e `contains`, o que é crucial para a eficiência da otimização da busca.
 
 ### 🌐 Distribuída
 
