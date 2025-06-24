@@ -214,6 +214,8 @@ Os testes realizados visam comparar as três abordagens distintas. Por meio dele
 - **/outputs** – Resultados das execuções em diferentes intervalos
 - **README.md** – Arquivo de descrição do projeto
 
+<br>
+
 ## 🧱 Desafios e Soluções
 
  - Desafio: O Limite do Tipo Long
@@ -241,6 +243,8 @@ A quantidade de threads nos clientes e no código paralelo é definida de forma 
 - Execução realmente distribuída (com múltiplos computadores) 
 
 Embora a arquitetura seja distribuída, os testes foram feitos em uma única máquina. Uma melhoria importante seria executar os clientes em máquinas diferentes, conectadas em rede real, assim tendo paralelismo real entre dispositivos, sem disputa por CPU, resultando em ganhos reais de desempenho.
+
+<br>
 
 ## ✅ Conclusão
 
