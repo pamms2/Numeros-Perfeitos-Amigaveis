@@ -209,7 +209,7 @@ Os testes realizados visam comparar as três abordagens distintas. Por meio dele
 
 ## 📂 Estrutura dos Arquivos
 
-- **/códigos** – Contém o código-fonte Java (sequencial, paralelo e distribuído)
+- **/codigos** – Códigos-fonte em Java (sequencial, paralelo e distribuído)
 - **/docs** – Documentação técnica e gráficos de desempenho
 - **/outputs** – Resultados das execuções em diferentes intervalos
 - **README.md** – Arquivo de descrição do projeto
@@ -249,4 +249,14 @@ Embora a arquitetura seja distribuída, os testes foram feitos em uma única má
 ## ✅ Conclusão
 
 Concluimos que paralelizar já traz ótimos ganhos, e distribuir só compensa em cargas muito altas. Também entendemos que mais threads nem sempre significam mais desempenho. Superamos o limite do long com a fórmula de Euclides-Mersenne, o que foi essencial pra alcançar números muito maiores.
+
+<br>
+
+# ✍️ Autoria
+Pamela Berti Braz
+Josiane Mariane Batista
+Maria Clara Nascimento de Jesus
+Letícia Bento Pinto
+Anny Vitória Costa
+Paolla Sanches
 
