@@ -217,24 +217,30 @@ Os testes realizados visam comparar as três abordagens distintas. Por meio dele
 ## 🧱 Desafios e Soluções
 
  - Desafio: O Limite do Tipo Long
+
 Durante os testes, nos deparamos com uma limitação importante: o tipo long, utilizado em muitos cálculos, suporta apenas números de até 19 dígitos. Isso se tornou um obstáculo, pois trabalhar com números extremamente grandes, como os envolvidos na geração de números perfeitos, simplesmente não seria possível com esse tipo de dado.
 
 - Solução: Euclides-Mersenne e BigInteger
+
 Com a fórmula de Euclides-Mersenne conseguimos contornar esse desafio. Essa fórmula, combinada com o uso do tipo BigInteger, permitiu ultrapassar de forma eficiente o limite do long. Isso foi essencial para alcançar intervalos maiores. Saímos de um limite de 19 dígitos para números que possuem até 12.000 dígitos. Ou seja, conseguimos explorar um intervalo mais de 600 vezes maior do que seria possível com o long.
 
 ## 🚀 Melhorias
 
 - Balanceamento dinâmico de carga entre clientes atualmente
- Cada cliente recebe um intervalo fixo do servidor. Uma melhoria seria implementar um sistema onde quando um cliente termina sua tarefa antes dos outros, ele possa assumir parte da carga de outro cliente ainda execução, evitando que o tempo total dependa do cliente mais lento.
+
+Cada cliente recebe um intervalo fixo do servidor. Uma melhoria seria implementar um sistema onde quando um cliente termina sua tarefa antes dos outros, ele possa assumir parte da carga de outro cliente ainda execução, evitando que o tempo total dependa do cliente mais lento.
 
 - Retorno de resultados ao servidor na implementação Atual
- O servidor apenas distribui os intervalos e não recebe os resultados de volta. Uma melhoria seria permitir que os clientes enviassem no mínimo um aviso de finalização ao servidor, podendo também enviar seus tempos de execução, os pares encontrados e os números perfeitos encontrados. Dessa forma haveria um controle centralizado, um monitoramento em tempo real e a possibilidade de consolidar resultados em um único ponto. 
+
+O servidor apenas distribui os intervalos e não recebe os resultados de volta. Uma melhoria seria permitir que os clientes enviassem no mínimo um aviso de finalização ao servidor, podendo também enviar seus tempos de execução, os pares encontrados e os números perfeitos encontrados. Dessa forma haveria um controle centralizado, um monitoramento em tempo real e a possibilidade de consolidar resultados em um único ponto. 
 
 - Criação dinâmica de threads com thread pool
- A quantidade de threads nos clientes e no código paralelo é definida de forma fixa, assim uma abordagem mais eficiente seria utilizar um Thread Pool, um conjunto de threads reutilizáveis controlado dinamicamente. Isso evita o custo de criar e destruir threads repetidamente, reduzindo a sobrecarga e melhorando o uso de CPU.
+
+A quantidade de threads nos clientes e no código paralelo é definida de forma fixa, assim uma abordagem mais eficiente seria utilizar um Thread Pool, um conjunto de threads reutilizáveis controlado dinamicamente. Isso evita o custo de criar e destruir threads repetidamente, reduzindo a sobrecarga e melhorando o uso de CPU.
 
 - Execução realmente distribuída (com múltiplos computadores) 
- Embora a arquitetura seja distribuída, os testes foram feitos em uma única máquina. Uma melhoria importante seria executar os clientes em máquinas diferentes, conectadas em rede real, assim tendo paralelismo real entre dispositivos, sem disputa por CPU, resultando em ganhos reais de desempenho.
+
+Embora a arquitetura seja distribuída, os testes foram feitos em uma única máquina. Uma melhoria importante seria executar os clientes em máquinas diferentes, conectadas em rede real, assim tendo paralelismo real entre dispositivos, sem disputa por CPU, resultando em ganhos reais de desempenho.
 
 ## ✅ Conclusão
 
