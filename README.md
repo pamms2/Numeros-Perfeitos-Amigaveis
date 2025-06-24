@@ -252,11 +252,7 @@ Concluimos que paralelizar já traz ótimos ganhos, e distribuir só compensa em
 
 <br>
 
-# ✍️ Autoria
-Pamela Berti Braz
-Josiane Mariane Batista
-Maria Clara Nascimento de Jesus
-Letícia Bento Pinto
-Anny Vitória Costa
-Paolla Sanches
+## ✍️ Autoria
+Alunas do curso de Engenharia de Software na UTFPR - campus Cornélio Procópio:  
+**Pamela** Berti Braz, **Josiane** Mariane Batista, **Maria Clara** Nascimento de Jesus, **Letícia** Bento Pinto, **Anny Vitória** Costa e **Paolla** Sanches  
 
